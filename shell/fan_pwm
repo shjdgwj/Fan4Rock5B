@@ -13,7 +13,7 @@ while true
 do
 	a=`cat /sys/class/thermal/thermal_zone0/temp`
 	time=`date`
-	pwm= 5800
+	pwm=5800
 	if (( $a > 47500 ))
 	then
 		pwm=9000
