@@ -16,10 +16,10 @@ do
 	pwm= 5800
 	if (( $a > 45000 ))
 	then
-		pwm=9000
-	elif (( $a< 40000 ))
+		pwm= 9000
+	elif (( $a < 40000 ))
 	then
-		pwm=5800
+		pwm= 5800
 	fi
 	$echo ${pwm} > /sys/devices/platform/fd8b0010.pwm/pwm/pwmchip*/pwm0/duty_cycle
 	$echo [${time}] Thermal value: ${a}, write fan PWM cycle ${pwm}
