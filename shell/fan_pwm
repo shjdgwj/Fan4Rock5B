@@ -18,11 +18,11 @@ do
 	if (( $a > 47500 ))
 	then
 		pwm=9000
-		sleeptime=15
+		sleeptime=30
 	elif (( $a< 40000 ))
 	then
 		pwm=5800
-		sleeptime=5
+		sleeptime=10
 	fi
 	echo ${pwm} > /sys/devices/platform/fd8b0010.pwm/pwm/pwmchip*/pwm0/duty_cycle
 	echo [${time}] Thermal value: ${a}, write fan PWM cycle ${pwm}
