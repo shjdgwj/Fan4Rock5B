@@ -1,7 +1,7 @@
 #!/bin/bash
 
 time=`date`
-echo [${time}] Noob PWM script started, push to 80% for 3 seconds to start
+echo [${time}] Noob PWM script started, push to 100% for 3 seconds to start
 echo 0 > /sys/devices/platform/fd8b0010.pwm/pwm/pwmchip*/export
 echo 10000 > /sys/devices/platform/fd8b0010.pwm/pwm/pwmchip*/pwm0/period
 echo 10000 > /sys/devices/platform/fd8b0010.pwm/pwm/pwmchip*/pwm0/duty_cycle
@@ -14,14 +14,17 @@ do
 	a=`cat /sys/class/thermal/thermal_zone0/temp`
 	time=`date`
 	pwm=5800
+	sleeptime=5
 	if (( $a > 47500 ))
 	then
 		pwm=9000
+		sleeptime=15
 	elif (( $a< 40000 ))
 	then
 		pwm=5800
+		sleeptime=5
 	fi
 	echo ${pwm} > /sys/devices/platform/fd8b0010.pwm/pwm/pwmchip*/pwm0/duty_cycle
 	echo [${time}] Thermal value: ${a}, write fan PWM cycle ${pwm}
-	sleep 5
+	sleep ${sleeptime}
 done
