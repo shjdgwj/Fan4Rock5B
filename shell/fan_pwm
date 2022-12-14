@@ -14,15 +14,15 @@ do
 	a=`cat /sys/class/thermal/thermal_zone0/temp`
 	time=`date`
 	pwm=5800
-	sleeptime=5
-	if (( $a > 47500 ))
+	sleeptime=30
+	if (( $a > 52000 ))
 	then
 		pwm=9000
-		sleeptime=30
-	elif (( $a< 40000 ))
+		sleeptime=60
+	elif (( $a < 40000 ))
 	then
 		pwm=5800
-		sleeptime=10
+		sleeptime=45
 	fi
 	echo ${pwm} > /sys/devices/platform/fd8b0010.pwm/pwm/pwmchip*/pwm0/duty_cycle
 	echo [${time}] Thermal value: ${a}, write fan PWM cycle ${pwm}
