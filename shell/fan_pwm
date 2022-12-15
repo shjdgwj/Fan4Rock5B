@@ -13,13 +13,13 @@ while true
 do
 	a=`cat /sys/class/thermal/thermal_zone0/temp`
 	time=`date`
-	pwm=5800
+	pwm=6100
 	sleeptime=30
 	if (( $a > 52000 ))
 	then
 		pwm=9000
 		sleeptime=60
-	elif (( $a < 40000 ))
+	elif (( $a < 43500 ))
 	then
 		pwm=5800
 		sleeptime=45
